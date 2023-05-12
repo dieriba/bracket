@@ -1,4 +1,3 @@
-# include <unistd.h>
 # include <stdio.h>
 
 int check_if_valid_bracket(const char *msg, char to_find, int i)
@@ -9,17 +8,12 @@ int check_if_valid_bracket(const char *msg, char to_find, int i)
         {
             i = check_if_valid_bracket(msg, (msg[i] % 2 ? msg[i] + 2 : msg[i] + 1), i);
             if (i == -1)
-                return -1;
+                    return -1;
         }
         else if (msg[i] == ')' || msg[i] == '}' || msg[i] == ']')
-        {
-            if (msg[i] != to_find)
-                return -1;
-            return i;
-        }
+            return (msg[i] != to_find) ? -1 : i;
     }
-    if (msg[i] != to_find) return -1;
-    return 0;
+    return msg[i] != to_find ? -1 : 0; 
 }
 
 int main (int argc, char **argv)
